@@ -153,6 +153,11 @@ def apply_joint_pose(data: mujoco.MjData, model: mujoco.MjModel, joint_pose: dic
 
 
 def bake_current_body_poses(spec: object, model: mujoco.MjModel, data: mujoco.MjData) -> None:
+    """
+    Note: This function is only appropriate if the data has been through a forward pass, and the joints modified
+          will be removed or are otherwised fixed. A full implementation would need to modify the joint range and
+          springref if joint stiffness is non-zero.
+    """
     for body_name in named_body_names(spec):
         body_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, body_name)
         if body_id <= 0:

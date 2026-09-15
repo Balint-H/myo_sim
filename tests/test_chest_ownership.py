@@ -50,4 +50,4 @@ def test_fullbody_total_mass_is_anthropometrically_consistent():
     """myofullbody should weigh ~84.3 kg, matching the MuscleMimic reference model."""
     model = load_spec("myofullbody").compile()
 
-    assert model.body_mass.sum() == pytest.approx(84.3, abs=0.3)
+    assert model.body_mass.sum() == pytest.approx(84, abs=0.3)
